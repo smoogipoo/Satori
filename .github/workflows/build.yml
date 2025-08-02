@@ -122,16 +122,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build
-        run: ./build.sh clr -c ${{ matrix.target.configuration }} ${{ matrix.target.build-args }}
+        run: ./build.sh clr+libs+packs+host -c ${{ matrix.target.configuration }} ${{ matrix.target.build-args }}
 
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.target.name }}
-          path: |
-            artifacts/bin/coreclr/${{ matrix.target.release-name }}/libcoreclr.dylib
-            artifacts/bin/coreclr/${{ matrix.target.release-name }}/libclrjit.dylib
-            artifacts/bin/coreclr/${{ matrix.target.release-name }}/System.Private.CoreLib.dll
+          path: artifacts/packages/${{ matrix.target.configuration }}/Shipping
 
   release:
     name: Create release
