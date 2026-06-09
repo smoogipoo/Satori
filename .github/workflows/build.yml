@@ -8,22 +8,22 @@ on:
 jobs:
   osx:
     name: Build (${{ matrix.target.name }})
-    runs-on: macos-latest
+    runs-on: macos-15-intel
     strategy:
       matrix:
         target:
-         - name: osx-x64-debug
-           configuration: 'Debug'
-           build-args: '--cross -a x64'
-           release-name: 'osx.x64.Debug'
+#         - name: osx-x64-debug
+#           configuration: 'Debug'
+#           build-args: ''
+#           release-name: 'osx.x64.Debug'
 #         - name: osx-arm64-debug
 #           configuration: 'Debug'
 #           build-args: ''
 #           release-name: 'osx.arm64.Debug'
-#          - name: osx-x64
-#            configuration: 'Release'
-#            build-args: '--cross -a x64'
-#            release-name: 'osx.x64.Release'
+          - name: osx-x64
+            configuration: 'Release'
+            build-args: ''
+            release-name: 'osx.x64.Release'
 #          - name: osx-arm64
 #            configuration: 'Release'
 #            build-args: ''
